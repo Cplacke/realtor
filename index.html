@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Your Dream Home</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            margin-bottom: 50px;
+        }
+
+        .header {
+            background-color: #222223;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+
+        .content {
+            padding: 20px;
+        }
+
+        .footer {
+            background-color: #d3d3d3;
+            padding: 10px;
+            text-align: center;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+
+        /* USED IN listing-card.ts */
+        .polaroid {
+            background-color: #fff;
+            padding: 20px;
+            border: 1px solid #d3d3d3;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin: 20px;
+            text-align: center;
+            width: 300px;
+            transition: transform 0.2s;
+        }
+        .polaroid:hover {
+            transform: scale(1.05);
+        }
+        .polaroid img {
+            width: 100%;
+            height: 260px;
+            object-fit: cover;
+            border-bottom: 1px solid #d3d3d3;
+            margin-bottom: 10px;
+        }
+        .caption {
+            padding: 10px;
+            background-color: #d3d3d3;
+            color: #333;
+            font-style: italic;
+        }
+
+    </style>
+</head>
+
+    <body>
+        <div class="header">
+            <h1>Welcome to Your Dream Home</h1>
+        </div>
+        <div class="content">
+            <p style="margin: 0 30px; text-align: center;">Thank you for visiting our listing. We are dedicated to helping you find the perfect home. Browse our
+                listings and feel free to contact me with any questions.</p>
+
+
+            {{  DOCUMENT_CONTENT  }}
+
+
+        </div>
+    </body>
+
+    <div class="footer">
+        <p>&copy; 2025 Weichert Hallmark. All content rights reserved.</p>
+    </div>
+
+</html>
