@@ -3,7 +3,9 @@
 
 <head>
     <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    {{ SCRIPT_CONTENT }}
     <title>RealFlow - Admin</title>
     <style>
         body {
@@ -102,12 +104,12 @@
             <h3> Base Settings</h3>
             <div class="row">
                 <span> Homepage Redirect Url </span>    
-                <input type="text" />
+                <input id="homepage-input" type="text" />
             </div>
-            <div class="row">
+            <!-- <div class="row">
                 <span> Go To Homepage On No Listings Configured </span>   
                 <input type="toggle" /> 
-            </div>
+            </div> -->
         </div>
         <div class="content form">
             <h3> 
@@ -118,14 +120,14 @@
             <div class="">
                 <div> 
                     Listings Urls 
-                    <button> Add </button> 
+                    <button onclick="addListing()"> Add </button> 
                 </div>   
                 <div id="listing-urls">
-                    <div class="">
+                    <div>
                         <input type="text" />
                         <button> Delete </button>
                     </div>
-                    <div class="">
+                    <div>
                         <input type="text" />
                         <button> Delete </button>
                     </div>
@@ -135,8 +137,8 @@
         <div class="content form">
             <div>
                 <div> Password </div>    
-                <input type="text" />
-                <button> Save Changes </button>
+                <input id="password-input" type="text" />
+                <button onclick="saveChanges()"> Save Changes </button>
             </div>
         </div>
     </body>
