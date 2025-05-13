@@ -4,13 +4,31 @@ import { getAllListingView } from "./lisiting-card.ts";
 const yamlLoader = new YamlLoader();
 const config = await yamlLoader.parseFile("./edit-me.yaml") as any;
 
-// let HTML_HOMES = '';
-// if (config.links.homes) {
-//     HTML_HOMES = await getAllListingView(config.links.homes)
-// }
-
 export const router = async (req: Request) => {
     const url = new URL(req.url);
+
+    if (url.pathname.toLocaleLowerCase().includes('admin')) {
+        return new Response(
+            Deno.readTextFileSync('admin.html').replace(
+                '{{  SCRIPT_CONTENT  }}',
+                '' // Deno.readTextFileSync('admin-client.js')
+            ),
+            {
+                status: 200, headers: { 'Content-Type': 'text/html' }
+            }
+        )
+    }
+    if (url.pathname.toLocaleLowerCase().includes('code')) {
+        return new Response(
+            Deno.readTextFileSync('qr-code/qr-code.svg').replace(
+                '{{  SCRIPT_CONTENT  }}',
+                '' // Deno.readTextFileSync('admin-client.js')
+            ),
+            {
+                status: 200, headers: { 'Content-Type': 'text/html' }
+            }
+        )
+    }
 
     if (config.links.homes?.length) {
         const homes = config.links.homes;
@@ -24,12 +42,8 @@ export const router = async (req: Request) => {
                 await getAllListingView(config.links.homes)
             ),
             {
-                status: 200,
-                headers: {
-                    'Content-Type': 'html'
-                }
+                status: 200, headers: { 'Content-Type': 'text/html' }
             }
-
         )
     }
     

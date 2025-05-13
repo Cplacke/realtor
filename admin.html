@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RealFlow - Admin</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            margin-bottom: 50px;
+        }
+
+        .header {
+            background-color: #222223;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+
+        .content {
+            padding: 20px;
+        }
+        .content.form {
+            margin: auto;
+            max-width: 800px;
+        }
+        .content.form .row {
+            display: flex;
+        }
+        .content.form input {
+            width: 320px;
+            margin-left: auto;
+            margin-right: 90px;
+        }
+
+        .content.form input, .content.form button {
+            margin-bottom: 10px;
+        }
+
+        .fine-print {
+            font-size: 13px;
+            margin: 0;
+            display: block;
+            font-weight: normal;
+        }
+
+        .footer {
+            background-color: #d3d3d3;
+            padding: 10px;
+            text-align: center;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+
+        /* USED IN listing-card.ts */
+        .polaroid {
+            background-color: #fff;
+            padding: 20px;
+            border: 1px solid #d3d3d3;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin: 20px;
+            text-align: center;
+            width: 300px;
+            transition: transform 0.2s;
+        }
+        .polaroid:hover {
+            transform: scale(1.05);
+        }
+        .polaroid img {
+            width: 100%;
+            height: 260px;
+            object-fit: cover;
+            border-bottom: 1px solid #d3d3d3;
+            margin-bottom: 10px;
+        }
+        .caption {
+            padding: 10px;
+            background-color: #d3d3d3;
+            color: #333;
+            font-style: italic;
+        }
+
+    </style>
+</head>
+
+    <body>
+        <div class="header">
+            <h1>Admin Settings</h1>
+        </div>
+        <div class="content form">
+            <h3> Base Settings</h3>
+            <div class="row">
+                <span> Homepage Redirect Url </span>    
+                <input type="text" />
+            </div>
+            <div class="row">
+                <span> Go To Homepage On No Listings Configured </span>   
+                <input type="toggle" /> 
+            </div>
+        </div>
+        <div class="content form">
+            <h3> 
+                Modify QR Redirect Listings
+                <span class="fine-print"> * current version only allows https://www.weichert.com/xxxxxxxxx/ link formatting at this time </span>
+            </h3>
+            
+            <div class="">
+                <div> 
+                    Listings Urls 
+                    <button> Add </button> 
+                </div>   
+                <div id="listing-urls">
+                    <div class="">
+                        <input type="text" />
+                        <button> Delete </button>
+                    </div>
+                    <div class="">
+                        <input type="text" />
+                        <button> Delete </button>
+                    </div>
+                </div> 
+            </div>
+        </div>
+        <div class="content form">
+            <div>
+                <div> Password </div>    
+                <input type="text" />
+                <button> Save Changes </button>
+            </div>
+        </div>
+    </body>
+
+    <div class="footer">
+        <p>&copy; 2025 Weichert Hallmark. All content rights reserved.</p>
+    </div>
+
+</html>
