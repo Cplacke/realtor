@@ -5,13 +5,21 @@ import { saveAdminChanges } from './api.ts';
 
 export const router = async (req: Request) => {
     const url = new URL(req.url);
+    if (url.pathname.toLocaleLowerCase().includes('code')) {
+        return new Response(
+            Deno.readTextFileSync('qr-code/qr-code.svg'),
+            {
+                status: 200, headers: { 'Content-Type': 'text/html' }
+            }
+        )
+    }
+    if (url.pathname.toLocaleLowerCase().includes('api/')) {
+        return await saveAdminChanges(req);
+    }
 
     const settings = await getUserSettings('tplacke') as any;
     const listings= await getListingByUser('tplacke') as string[];
 
-    if (url.pathname.toLocaleLowerCase().includes('api/')) {
-        return await saveAdminChanges(req);
-    }
 
     if (url.pathname.toLocaleLowerCase().includes('admin')) {
         return new Response(
@@ -39,15 +47,6 @@ export const router = async (req: Request) => {
                 '{{  DOCUMENT_CONTENT  }}',
                 await getAllListingView(listings)
             ),
-            {
-                status: 200, headers: { 'Content-Type': 'text/html' }
-            }
-        )
-    }
-
-    if (url.pathname.toLocaleLowerCase().includes('code')) {
-        return new Response(
-            Deno.readTextFileSync('qr-code/qr-code.svg'),
             {
                 status: 200, headers: { 'Content-Type': 'text/html' }
             }
