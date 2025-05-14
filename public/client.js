@@ -32,6 +32,17 @@ const saveChanges = () => {
             pass: $('#password-input')[0].value
         }),
         method: 'POST'
+    }).then((res) => {
+        console.info(res);
+        if (res.status === 200) {
+            $('#password-input')[0].style.border = '';
+            addPopUpMessage(
+                'Success', 'Your changes have been saved. You can now close this window.', res.status)
+        } else {
+            $('#password-input')[0].style.border = 'red solid 2px';
+            addPopUpMessage(
+                'Failure', 'Changes Failed to save; your password may be incorrect. Please try again.', res.status)
+        }
     })
 }
 
@@ -52,4 +63,17 @@ const ListingInputElement = (index, initialValue) => {
             <button onclick="$('#listing-${index}').remove()"> Delete </button>
         </div>
     `
+}
+
+const addPopUpMessage = (title, msg, code) => {
+    $('.submit')[0].innerHTML += `
+        <div id="message" style="background-color: ${code == 200 ? 'lightgreen' : 'lightcoral'}; padding: 5px 20px; border-radius: 8px;">
+            <h4> ${title} </h4>
+            <p> ${msg} </p>
+        </div>
+    `;
+
+    setTimeout(() => {
+        $('#message')[0].remove();
+    }, code == 200 ? 5000 : 2000)
 }

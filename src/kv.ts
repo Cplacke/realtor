@@ -47,15 +47,15 @@ export const checkRegistrationKey = async (user: string, pass: string) => {
     return registration.value === pass;
 }
 
-setUserRegistration('test-user', 'test-pass');
+setUserRegistration('tplacke', 'test-pass');
 
-updateUserSettings('test-user', {
-    user: "test-user",
+updateUserSettings('tplacke', {
+    user: "tplacke",
     name: "tester",
     homepage: "https://www.weichert.com/agents/Tracy-Placke-G0079/?office=50-G67",
 });
 
-updateListingToUser('test-user', [
+updateListingToUser('tplacke', [
     "https://www.weichert.com/127617343/",
     "https://www.weichert.com/127611463/",
 ]);
