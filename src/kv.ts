@@ -47,19 +47,6 @@ export const checkRegistrationKey = async (user: string, pass: string) => {
     return registration.value === pass;
 }
 
-setUserRegistration('tplacke', 'test-pass');
-
-updateUserSettings('tplacke', {
-    user: "tplacke",
-    name: "tester",
-    homepage: "https://www.weichert.com/agents/Tracy-Placke-G0079/?office=50-G67",
-});
-
-updateListingToUser('tplacke', [
-    "https://www.weichert.com/127617343/",
-    "https://www.weichert.com/127611463/",
-]);
-
 
 const clearKvStorage = async () => {
     let count = 0;
